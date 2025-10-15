@@ -40,8 +40,10 @@ jobs:
         with:
           node-version: 22.14.0
           cache: 'npm'
-      - run: npm install
-      - run: npm run e2e
+      - name: Run e2e tests
+        run: npm run e2e
+        env:
+          PUPPETEER_ARGS: --no-sandbox --disable-setuid-sandbox
 
   build:
     needs: [eslint, test]
