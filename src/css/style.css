@@ -1,4 +1,73 @@
 body {
-    color: #999;
+  color: #999;
 }
 
+.container {
+  margin-left: 30px;
+  margin-top: 50px;
+}
+
+.tooltip {
+  display: none;
+}
+
+.tooltip.active {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  position: absolute;
+  border: 1.5px solid #ccc;
+  border-radius: 3px;
+  width: 210px;
+  text-align: left;
+}
+
+.tooltip.active::before {
+  content: "";
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 10px;
+  border-style: solid;
+  border-color: #ccc transparent transparent transparent;
+}
+
+.tooltip.active::after {
+  content: "";
+  position: absolute;
+  bottom: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 8px;
+  border-style: solid;
+  border-color: #fff transparent transparent transparent;
+}
+
+.tooltip-title-container {
+  width: 100%;
+  background-color: #ebebeb;
+  border-bottom: 1px solid #c0c0c0;
+}
+
+.tooltip-title {
+  margin: 0;
+  padding: 7px;
+  font-size: 16px;
+}
+
+.tooltip-text {
+  font-size: 14px;
+  margin: 0;
+  padding: 7px;
+}
+
+.btn {
+  background-color: rgb(187, 59, 59);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  width: 160px;
+  height: 32px;
+  cursor: pointer;
+}
