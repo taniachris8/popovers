@@ -7,8 +7,9 @@ describe("Tooltip", () => {
 
   beforeEach(async () => {
     browser = await puppeteer.launch({
-      headless: true,
-      args: process.env.PUPPETEER_ARGS?.split(" ") || [],
+      headless: false,
+      slowMo: 100,
+      devtools: true,
     });
 
     page = await browser.newPage();
