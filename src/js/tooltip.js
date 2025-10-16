@@ -1,6 +1,6 @@
 export default class Tooltip {
-  constructor(message, content, element) {
-    this.message = message;
+  constructor(title, content, element) {
+    this.title = title;
     this.content = content;
     this.element = element;
 
@@ -10,7 +10,7 @@ export default class Tooltip {
     this.tooltipElement.classList.add("tooltip");
     this.tooltipElement.innerHTML = `
     <div class="tooltip-title-container">
-      <p class="tooltip-title">${this.message}</p>
+      <p class="tooltip-title">${this.title}</p>
       </div>
       <p class="tooltip-text">${this.content}</p>
     `;
