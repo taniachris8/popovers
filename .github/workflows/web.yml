@@ -44,7 +44,7 @@ jobs:
   #     - run: npm run e2e
 
   build:
-    needs: [eslint, test]
+    needs: [eslint]
 
     environment:
       name: github-pages
