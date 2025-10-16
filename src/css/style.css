@@ -36,10 +36,10 @@ body {
 .tooltip.active::after {
   content: "";
   position: absolute;
-  bottom: -16px;
+  bottom: -18px;
   left: 50%;
   transform: translateX(-50%);
-  border-width: 8px;
+  border-width: 10px;
   border-style: solid;
   border-color: #fff transparent transparent transparent;
 }

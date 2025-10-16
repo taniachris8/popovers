@@ -41,7 +41,7 @@ jobs:
           node-version: 22.14.0
           cache: 'npm'
       - run: npm install
-      - run: npm test
+      - run: npm run e2e
 
   build:
     needs: [eslint, test]

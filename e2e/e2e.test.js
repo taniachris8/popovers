@@ -1,26 +1,42 @@
 import puppeteer from "puppeteer";
+import { fork } from "child_process";
+
 jest.setTimeout(30000);
 
 describe("Tooltip", () => {
-  let browser;
-  let page;
+  let browser = null;
+  let page = null;
+  let server = null;
+  const baseUrl = "http://localhost:9000";
 
-  beforeEach(async () => {
-    browser = await puppeteer.launch({
-      headless: false,
-      slowMo: 100,
-      devtools: true,
+  beforeAll(async () => {
+    server = fork(`${__dirname}/e2e.server.js`);
+    await new Promise((resolve, reject) => {
+      server.on("error", reject);
+      server.on("message", (message) => {
+        if (message === "ok") {
+          resolve();
+        }
+      });
     });
 
+    browser = await puppeteer.launch({
+      headless: false,
+      slowMo: 250,
+      devtools: true,
+    });
     page = await browser.newPage();
-
-    await page.goto("http://localhost:9000/");
-    await page.waitForSelector(".btn");
-    await page.click(".btn");
   });
 
   afterAll(async () => {
     await browser.close();
+    server.kill();
+  });
+
+  beforeEach(async () => {
+    await page.goto(baseUrl);
+    await page.waitForSelector(".btn");
+    await page.click(".btn");
   });
 
   test("should add class 'active' to tooltip if button click", async () => {
